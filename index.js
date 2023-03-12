@@ -11,13 +11,17 @@ const app = express();
 // Public folder
 const publicPath = path.resolve(__dirname, './public');
 
-
+// Twilio Credentials
 const accountSid = 'AC3ddb199da8721711e39cbd74c879e5fa';
 const authToken = '40a74c14da439c86abf530f9db719d75';
+
+// twilio client
 const client = require('twilio')(accountSid, authToken);
 
+// Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Route POST /sms
 app.post('/sms', (req, res) => {
   const message = req.body.Body;
   const phone_number = req.body.From;
